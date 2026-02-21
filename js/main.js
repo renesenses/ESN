@@ -151,6 +151,36 @@ if (!prefersReduced) {
   });
 }
 
+// ===== Shop filter =====
+const shopFilters = document.querySelectorAll('.shop__filter');
+const shopItems = document.querySelectorAll('.shop-item');
+
+shopFilters.forEach(btn => {
+  btn.addEventListener('click', () => {
+    // Update active filter
+    shopFilters.forEach(f => f.classList.remove('active'));
+    btn.classList.add('active');
+
+    const filter = btn.dataset.filter;
+
+    shopItems.forEach(item => {
+      const match = filter === 'all' || item.dataset.category === filter;
+      item.classList.toggle('hidden', !match);
+
+      // Re-trigger fade-in animation
+      if (match) {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(16px)';
+        requestAnimationFrame(() => {
+          item.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+          item.style.opacity = '1';
+          item.style.transform = 'translateY(0)';
+        });
+      }
+    });
+  });
+});
+
 // ===== Smooth scroll for anchor links =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', (e) => {
