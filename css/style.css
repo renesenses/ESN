@@ -350,7 +350,7 @@ img { max-width: 100%; display: block; }
 
 .services__grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
 }
 
@@ -530,6 +530,52 @@ img { max-width: 100%; display: block; }
 
 .produit-card__link:hover {
   color: var(--accent2);
+}
+
+/* Single product featured layout */
+.produits__grid--single {
+  grid-template-columns: 1fr;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.produit-card--featured .produit-card__visual {
+  height: 240px;
+}
+
+.produit-card__badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #f59e0b;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  background: rgba(245, 158, 11, 0.08);
+  margin-bottom: 12px;
+}
+
+.produit-card__features {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.produit-card__features li {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  padding-left: 20px;
+  position: relative;
+}
+
+.produit-card__features li::before {
+  content: '~';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
 }
 
 /* ===== FORUM ===== */
@@ -997,6 +1043,10 @@ img { max-width: 100%; display: block; }
 
   .produit-card__visual {
     height: 160px;
+  }
+
+  .produit-card__features {
+    grid-template-columns: 1fr;
   }
 
   /* Forum */
